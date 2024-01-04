@@ -1,0 +1,27 @@
+databaseChangeLog:
+  - changeSet:
+      id: initializeSchema
+      author: Benjaminas
+      changes:
+        - sql: |
+            CREATE TABLE users (
+              id UUID PRIMARY KEY,
+              username VARCHAR(255) NOT NULL,
+              email VARCHAR(255) NOT NULL,
+              password VARCHAR(255) NOT NULL,
+              created_at TIMESTAMP NOT NULL,
+              updated_at TIMESTAMP NOT NULL
+            );
+            CREATE TABLE blogs (
+              id UUID PRIMARY KEY,
+              user_id UUID NOT NULL,
+              title TEXT NOT NULL,
+              body TEXT NOT NULL,
+              created_at TIMESTAMP NOT NULL,
+              updated_at TIMESTAMP NOT NULL,
+              FOREIGN KEY (user_id) REFERENCES users(id)
+            );
+      rollback:
+        - sql:
+            - DROP TABLE IF EXISTS blogs;
+            - DROP TABLE IF EXISTS users;
