@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include:
       file: db/changelog/01-initialize-database-schema.yaml
+  - include:
+      file: db/changelog/02-add-mock-users.yaml

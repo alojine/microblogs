@@ -26,7 +26,7 @@ public class UsersController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<UserDto> get(@PathVariable("userId") String userId) {
+    public ResponseEntity<UserDto> getUserById(@PathVariable("userId") String userId) {
         UUID id;
         try {
             id = UUID.fromString(userId);
@@ -38,7 +38,7 @@ public class UsersController {
     }
 
     @PostMapping
-    public ResponseEntity<User> save(@RequestBody UserDto userDto) {
+    public ResponseEntity<User> createUser(@RequestBody UserDto userDto) {
         return new ResponseEntity<>(userService.save(userMapper.userDTOtoUser(userDto)), HttpStatus.OK);
     }
 }

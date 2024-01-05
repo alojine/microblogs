@@ -1,6 +1,14 @@
-#databaseChangeLog:
-#  - changeSet:
-#      id: addUsers
-#      author: Benjaminas
-#      changes:
-#        - sql:
+databaseChangeLog:
+  - changeSet:
+      id: addUsers
+      author: Benjaminas
+      changes:
+        - sql: | 
+            INSERT INTO users (id, username, email, password, created_at, updated_at) 
+            VALUES 
+              ('21c22fa2-2050-4815-9dbb-3de0389a6bd7', 'tom', 'tom@gmail.com', 'tomtom', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+              ('0629a3ca-5452-4264-8dfb-67ead125d134', 'gin', 'gin@gmail.com', 'gingin', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+      rollback:
+        - sql:
+           - DELETE FROM users WHERE username IN ('tom', 'gin');
+
