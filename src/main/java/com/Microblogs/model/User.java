@@ -1,14 +1,17 @@
 package com.Microblogs.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
 import java.util.UUID;
 
-@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -16,17 +19,25 @@ public class User {
     private UUID id;
 
     @Column(name = "username", nullable = false)
+    @Setter
+    @Getter
     private String username;
 
     @Column(name = "email", nullable = false)
+    @Setter
+    @Getter
     private String email;
 
     @Column(name = "password", nullable = false)
+    @Setter
+    @Getter
     private String password;
 
+    @CreationTimestamp
     @Column(name = "created_at", nullable = false)
     private Timestamp createdAt;
 
+    @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
 
