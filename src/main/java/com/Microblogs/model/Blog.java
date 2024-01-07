@@ -1,12 +1,18 @@
 package com.Microblogs.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
 import java.util.UUID;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
+@Entity
+@Table(name = "blogs")
 public class Blog {
 
     @Id
@@ -14,7 +20,7 @@ public class Blog {
     private UUID id;
 
     @ManyToOne
-    @JoinTable(name = "user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(name = "title", nullable = false)
@@ -23,9 +29,11 @@ public class Blog {
     @Column(name = "body", nullable = false)
     private String body;
 
+    @CreationTimestamp
     @Column(name = "created_at", nullable = false)
     private Timestamp createdAt;
 
+    @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
 

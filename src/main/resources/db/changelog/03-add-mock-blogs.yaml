@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: addUsers
+      author: Benjaminas
+      changes:
+        - sql: |
+            INSERT INTO blogs (id, user_id, title, body, created_at, updated_at) 
+            VALUES 
+              ('977a9c13-414b-4cb2-8ad4-380ef6c2f4c3', '21c22fa2-2050-4815-9dbb-3de0389a6bd7', 'Electric cars are overpriced', 'I would rather buy a diesel car than an electric. It seems that electric cars are way overpriced', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+              ('f110dde6-1449-4a5c-aed6-96343ff3d2be', '0629a3ca-5452-4264-8dfb-67ead125d134', 'I love petrol cars', 'Petrol cars with big engines are simply the best.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+              ('d6f195b9-cd62-4f12-ac2d-8ee71ab35ebc', '21c22fa2-2050-4815-9dbb-3de0389a6bd7',  'We should use public transport', 'Public transport is the best way to get to work. It is less expensive than driving by car yourself.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+      rollback:
+        - sql:
+            - DELETE FROM blogs WHERE id IN ('977a9c13-414b-4cb2-8ad4-380ef6c2f4c3', 'f110dde6-1449-4a5c-aed6-96343ff3d2be', 'd6f195b9-cd62-4f12-ac2d-8ee71ab35ebc');

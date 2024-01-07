@@ -1,15 +1,18 @@
 package com.Microblogs.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
+import java.util.List;
 import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @Entity
 @Table(name = "users")
 public class User {
@@ -19,18 +22,12 @@ public class User {
     private UUID id;
 
     @Column(name = "username", nullable = false)
-    @Setter
-    @Getter
     private String username;
 
     @Column(name = "email", nullable = false)
-    @Setter
-    @Getter
     private String email;
 
     @Column(name = "password", nullable = false)
-    @Setter
-    @Getter
     private String password;
 
     @CreationTimestamp
@@ -40,6 +37,13 @@ public class User {
     @UpdateTimestamp
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
+
+    @OneToMany(fetch = FetchType.LAZY,
+            mappedBy = "user",
+            cascade = CascadeType.ALL
+    )
+    @JsonIgnore
+    private List<Blog> blogList;
 
     @Override
     public String toString() {

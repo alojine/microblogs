@@ -21,8 +21,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(User user) {
-        if (userRepository.findByUsername(user.getUsername()).isPresent()){
-            throw new ResourceNotFoundException(String.format("User with username: %s already exists", user.getUsername()));
+        if (userRepository.findByEmail(user.getEmail()).isPresent()){
+            throw new ResourceNotFoundException(String.format("User with email: %s already exists", user.getEmail()));
         }
 
         return userRepository.save(user);
@@ -32,5 +32,11 @@ public class UserServiceImpl implements UserService {
     public User getById(UUID id) {
         return userRepository.getUserById(id)
                 .orElseThrow(() -> new ResourceNotFoundException(String.format("User with id: %s does not exist.", id.toString())));
+    }
+
+    @Override
+    public User getByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException(String.format("User with email: %s does not exists", email)));
     }
 }
