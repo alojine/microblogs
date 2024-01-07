@@ -32,11 +32,11 @@ public class BlogController {
         Blog blog = blogMapper.blogDTOtoBlog(blogDto);
         blog.setUser(userService.getByEmail(blogDto.email()));
 
-        return new ResponseEntity<>(blogService.save(blog), HttpStatus.OK);
+        return new ResponseEntity<>(blogService.save(blog), HttpStatus.CREATED);
     }
 
     @PutMapping("/{blogId}")
-    public ResponseEntity<Blog> update(
+    public ResponseEntity<Blog> updateBlog(
             @PathVariable("blogId") String blogId,
             @RequestBody BlogDto blogDto
     ) {
