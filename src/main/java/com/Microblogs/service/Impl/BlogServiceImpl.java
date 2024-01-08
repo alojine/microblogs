@@ -53,7 +53,7 @@ public class BlogServiceImpl implements BlogService {
     public Blog update(Blog blog) {
         Blog dbBlog = getById(blog.getId());
 
-        if (dbBlog.getUser() != blog.getUser()) {
+        if (!dbBlog.getUser().equals(blog.getUser())) {
             throw new RequestValidationException("Only blog owner can update the blog");
         }
 
