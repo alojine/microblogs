@@ -34,6 +34,12 @@ public class BlogController {
         return new ResponseEntity<>(blogMapper.blogListToBlogDtoList(blogService.getAll()), HttpStatus.OK);
     }
 
+    @GetMapping("/users/{userId}")
+    public ResponseEntity<List<BlogDto>> getBlogsByUser(@PathVariable("userId") String userId) {
+        List<Blog> blogList = userService.getById(UUIDHelper.parseUUID(userId)).getBlogList();
+        return new ResponseEntity<>(blogMapper.blogListToBlogDtoList(blogList), HttpStatus.OK);
+    }
+
     @GetMapping("/{blogId}")
     public ResponseEntity<BlogDto> getBlogById(@PathVariable("blogId") String blogId) {
         return new ResponseEntity<>(blogMapper.blogToBlogDto(blogService.getById(UUIDHelper.parseUUID(blogId))), HttpStatus.OK);
