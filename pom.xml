@@ -19,6 +19,7 @@
 		<org.liquibase.version>4.25.1</org.liquibase.version>
 		<org.projectlambok.version>1.18.30</org.projectlambok.version>
 		<org.apache.logging.log4j.version>2.22.1</org.apache.logging.log4j.version>
+		<org.junit.jupiter.version>5.10.1</org.junit.jupiter.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -75,6 +76,13 @@
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-slf4j-impl</artifactId>
 			<version>${org.apache.logging.log4j.version}</version>
+		</dependency>
+		<!--	Junit Jupiter	-->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
+			<version>${org.junit.jupiter.version}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

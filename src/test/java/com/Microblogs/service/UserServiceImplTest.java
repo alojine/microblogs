@@ -5,6 +5,7 @@ import com.Microblogs.exception.ResourceNotFoundException;
 import com.Microblogs.model.User;
 import com.Microblogs.repository.UserRepository;
 import com.Microblogs.service.Impl.UserServiceImpl;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;

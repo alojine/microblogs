@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("api/v1/blogs")
 public class BlogController {
@@ -25,6 +27,16 @@ public class BlogController {
         this.blogService = blogService;
         this.userService = userService;
         this.blogMapper = blogMapper;
+    }
+
+    @GetMapping
+    public ResponseEntity<List<BlogDto>> getAllBlogs() {
+        return new ResponseEntity<>(blogMapper.blogListToBlogDtoList(blogService.getAll()), HttpStatus.OK);
+    }
+
+    @GetMapping("/{blogId}")
+    public ResponseEntity<BlogDto> getBlogById(@PathVariable("blogId") String blogId) {
+        return new ResponseEntity<>(blogMapper.blogToBlogDto(blogService.getById(UUIDHelper.parseUUID(blogId))), HttpStatus.OK);
     }
 
     @PostMapping

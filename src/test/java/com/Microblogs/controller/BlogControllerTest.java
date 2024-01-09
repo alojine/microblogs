@@ -1,6 +1,7 @@
 package com.Microblogs.controller;
 
 import com.Microblogs.controller.Blog.BlogDto;
+import com.Microblogs.exception.ResourceNotFoundException;
 import com.Microblogs.mapper.BlogMapper;
 import com.Microblogs.model.Blog;
 import com.Microblogs.model.User;
@@ -13,6 +14,7 @@ import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -36,13 +38,13 @@ class BlogControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @Mock
+    @MockBean
     private BlogService blogService;
 
-    @Mock
+    @MockBean
     private UserService userService;
 
-    @Mock
+    @MockBean
     private BlogMapper blogMapper;
 
     @Test

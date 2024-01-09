@@ -21,6 +21,7 @@ public class WordServiceImpl implements WordService {
         this.stopWords = stopWords;
     }
 
+
     @Override
     public List<WordDto> getMostUsedWords(int size) {
         Map<String, Integer> wordFrequency = new HashMap<>();
