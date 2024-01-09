@@ -32,7 +32,7 @@ mvn spring-boot:run
 ### Blog Endpoints:
 - **Get All Blogs:** `GET /api/v1/blogs`
 - **Get Blog by ID:** `GET /api/v1/blogs/{blogId}`
-- **Get All User Blogs by ID:** `GET /api/v1/blogs/{userId}`
+- **Get All User Blogs by ID:** `GET /api/v1/blogs/user/{userId}`
 - **Create Blog:** `POST /api/v1/blogs`
 - **Update Blog by ID:** `PUT /api/v1/blogs/{blogId}`
 - **Delete Blog by ID:** `DELETE /api/v1/blogs/{blogId}`
